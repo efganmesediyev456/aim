@@ -1,0 +1,1 @@
+{{$blog->translate('az')->name}}
