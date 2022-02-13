@@ -94,7 +94,7 @@ class Multimedia extends Model  implements TranslatableContract
         $video_count=$this->videos->count();
 
 
-        return "$image_count Şəkil, $video_count Video";
+        return "$image_count ".__('sites.sekil').", $video_count ".__('sites.video');
     }
 
 

@@ -67,23 +67,24 @@
                     <td>{{$menu->slug}}</td>
                     <td>
                         @foreach(["az","en","ru"] as $locale)
-                        <span  class="{{$locale}}" style="display: none;">{{$menu->translate($locale)->name}}</span>
+
+                        <span  class="{{$locale}}" style="display: {{app()->getLocale()==$locale ? "block":"none"}} ">{{$menu->translate($locale)->name}}</span>
                         @endforeach
                     </td>
                      <td>
                         @foreach(["az","en","ru"] as $locale)
-                        <span  class="{{$locale}}" style="display: none;">{{mb_substr($menu->translate($locale)->content,0,100)}}{{mb_strlen($menu->translate($locale)->content)>100 ? "...":null}}</span>
+                        <span  class="{{$locale}}" style="display: {{app()->getLocale()==$locale ? "block":"none"}} ">{{mb_substr($menu->translate($locale)->content,0,100)}}{{mb_strlen($menu->translate($locale)->content)>100 ? "...":null}}</span>
                         @endforeach
                     </td>
                     <td>
                         @foreach(["az","en","ru"] as $locale)
-                        <span  class="{{$locale}}" style="display: none;">{{optional(optional($menu->parent)->translate($locale))->name}}</span>
+                        <span  class="{{$locale}}" style="display: {{app()->getLocale()==$locale ? "block":"none"}} ">{{optional(optional($menu->parent)->translate($locale))->name}}</span>
                         @endforeach
                     </td>
                     <td>
                        {{$menu->status==0 ? "static":"dynamic"}}
                     </td>
-                    <td>
+                    <td style="display: flex;">
                        <a class="btn btn-success" href="{{route('menu.edit',$menu->id)}}">Edit</a>
                        <a class="btn btn-danger" href="#" onclick="$(this).next('form').submit()">Delete</a>
                        <form action="{{route('menu.destroy',$menu->id)}}" method="POST">
@@ -108,8 +109,9 @@
 
 <script>
     $(function(){
-        $(".gradeX span").css("display","none")
-        $(".gradeX span."+'{{app()->getLocale()}}').css("display","block")
+
+       
+        
 
         $("#changeTableLanguage").on("change",function(){
             $(".gradeX span").css("display","none")
@@ -122,6 +124,17 @@
             toastr.success('{{session()->get("success")}}')
 
         @endif
+
+
+        $('.datatables-demo').on('page.dt', function(){
+
+            $("body .gradeX span").css("display","none")
+        $("body .gradeX span."+'{{app()->getLocale()}}').css("display","block")
+
+        
+
+
+        })
 
     })
 </script>

@@ -9,7 +9,7 @@
     <section class="breadcrumb">
       <div class="container">
         <ul>
-          <li><a href="/">Ana səhifə</a></li>
+           <li><a href="/">{{__('sites.anasehife')}}</a></li>
           <li><a href="/">{{$page->parent->name}}</a></li>
           <li>{{$page->name}}</li>
         </ul>

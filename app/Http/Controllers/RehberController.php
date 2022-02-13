@@ -43,6 +43,7 @@ class RehberController extends Controller
     {
 
 
+        $request->merge(['slug'=>Str::slug($request->slug)]);
         $this->validate($request,[
             "slug"=>"required|unique:rehbers,slug",
             "position.az"=>"required",
@@ -118,6 +119,7 @@ class RehberController extends Controller
     public function update(Request $request, $id)
     {
 
+        $request->merge(['slug'=>Str::slug($request->slug)]);
          $rehber=Rehber::findOrFail($id);
         
         $this->validate($request,[

@@ -9,7 +9,7 @@
     <section class="breadcrumb">
       <div class="container">
         <ul>
-          <li><a href="/">Ana səhifə</a></li>
+          <li><a href="/">{{__('sites.anasehife')}}</a></li>
           <li><a href="/">{{$page->parent->name}}</a></li>
           <li>{{$page->name}}</li>
         </ul>
@@ -36,7 +36,7 @@
 
 <div class="in-page__content">
               <div class="in-page__title mb-24">
-                <h1>Rəhbərlik</h1>
+                <h1>{{$page->name}}</h1>
               </div>
               <div class="row gy-xs-24">
 
@@ -55,7 +55,7 @@
                           <div class="management-card__fullname mb-8"><span>{{$rehber->surname}}</span><span>{{$rehber->name}}</span></div>
                           <p class="management-card__description mb-xs-16 mb-lg-40">{{$rehber->title}}</p><a class="management-card__more" href="{{route('frond.page.child',['locale'=>app()->getLocale(),'parent'=>$page->parent->slug,
                               'dynamic'=>$page->slug,'child'=>$rehber->slug
-                            ])}}">Daha çox<i class="aim-long-arrow-right size16 ml-4"></i></a>
+                            ])}}">{{__('sites.dahacox')}}<i class="aim-long-arrow-right size16 ml-4"></i></a>
                         </div>
                       </div>
                     </div>

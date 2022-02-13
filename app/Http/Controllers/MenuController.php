@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Menu;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 
 class MenuController extends Controller
@@ -52,7 +53,8 @@ class MenuController extends Controller
             "name.az"=>"required",
             "parent_id"=>"integer",
             "status"=>"required",
-            "content.az"=>"required_if:status,1"
+            "content.az"=>"required_if:status,1",
+            "file"=>"sometimes|mimes:doc,docx,pdf"
         ]);
 
 
@@ -64,6 +66,19 @@ class MenuController extends Controller
         foreach (['az','en','ru'] as $locale) {
             $menu->translateOrNew($locale)->name = $request->name["$locale"];
             $menu->translateOrNew($locale)->content = $request->content["$locale"];
+        }
+
+
+
+        if($request->hasFile("file")){
+                $file=$request->file('file');
+
+                $image_name=uniqid().'.'.$file->getClientOriginalExtension();
+
+                $file->storeAs('/public/menu', $image_name);
+
+                $menu->file=$image_name;
+            
         }
 
         $menu->save();
@@ -116,7 +131,9 @@ class MenuController extends Controller
             "name.az"=>"required",
             "parent_id"=>"integer",
             "status"=>"required",
-            "content.az"=>"required_if:status,1"
+            "content.az"=>"required_if:status,1",
+            "file"=>"sometimes|mimes:doc,docx,pdf"
+
         ]);
 
         $menu=Menu::find($id);
@@ -124,6 +141,23 @@ class MenuController extends Controller
         $menu->parent_id=$request->parent_id;
         $menu->status=$request->status;
         $menu->slug=Str::slug($request->slug);
+
+
+         if($request->hasFile("file")){
+
+
+                if(Storage::exists('/public/menu/'.$menu->file)) {
+                        Storage::delete('/public/menu/'.$menu->file);
+                } 
+                $file=$request->file('file');
+
+                $image_name=uniqid().'.'.$file->getClientOriginalExtension();
+
+                $file->storeAs('/public/menu', $image_name);
+
+                $menu->file=$image_name;
+            
+        }
 
         $menu->deleteTranslations(); 
 

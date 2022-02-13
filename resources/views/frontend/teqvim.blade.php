@@ -7,8 +7,8 @@
  <section class="breadcrumb">
       <div class="container">
         <ul>
-          <li><a href="/">Ana səhifə</a></li>
-          <li>İnnovasiya təqvimi</li>
+          <li><a href="/">{{__('sites.anasehife')}}</a></li>
+          <li>{{__('sites.innovasiyateq')}}</li>
         </ul>
       </div>
     </section>
@@ -20,19 +20,19 @@
               <div class="row justify-content-center">
                 <div class="col-lg-9">
                   <div class="in-page__title mb-24">
-                    <h1>İnnovasiya təqvimi</h1>
+                    <h1>{{__('sites.innovasiyateq')}}</h1>
                   </div>
                   <div class="innovation-calendar">
                     <div class="ic-form">
                       <div class="ic-form__inputs">
                         <div class="ic-form__search ic-form__container">
-                          <input name="search" id="searchInput" type="text" placeholder="Axtarış edin"><i id="search"  class="aim-search size20"></i>
+                          <input name="search" id="searchInput" type="text" placeholder="{{__('sites.search')}}"><i id="search"  class="aim-search size20"></i>
                         </div>
                         <div class="ic-form__select ic-form__container">
                           <select name="select" required id="format_type">
-                            <option hidden selected value="">Tədbir formatını seçin</option>
-                            <option value="musabiqe">Müsabiqə</option>
-                            <option value="konfrans">Konfrans</option>
+                            <option hidden selected value="">{{__('sites.tedbirformsec')}}</option>
+                            <option value="musabiqe">{{__('sites.musabiqe')}}</option>
+                            <option value="konfrans">{{__('sites.konfrans')}}</option>
                             <option value="hackhaton">Hackhaton</option>
                             <option value="simpozium">Simpozium</option>
                           </select><i class="aim-angle-down size20"></i>
@@ -40,16 +40,16 @@
                       </div>
                       <div class="ic-form__boxes">
                         <label>
-                          <input type="checkbox" value="yerli" name="type"><span>Yerli</span>
+                          <input type="checkbox" value="yerli" name="type"><span>{{__('sites.yerli')}}</span>
                         </label>
                         <label>
-                          <input type="checkbox" value="beynelxalq" name="type"><span>Beynəlxalq</span>
+                          <input type="checkbox" value="beynelxalq" name="type"><span>{{__('sites.beynelxalq')}}</span>
                         </label>
                         <label>
-                          <input type="checkbox" value="onlayn" name="type"><span>Onlayn</span>
+                          <input type="checkbox" value="onlayn" name="type"><span>{{__('sites.onlayn')}}</span>
                         </label>
                         <label>
-                          <input type="checkbox" value="offlayn" name="type"><span>Oflayn</span>
+                          <input type="checkbox" value="offlayn" name="type"><span>{{__('sites.offlayn')}}</span>
                         </label>
                       </div>
                     </div>
@@ -89,7 +89,7 @@
                               </div>
                               <div class="right">
                                 @foreach(explode(',',$teqvim->type) as $type)
-                                <div class="ic-card__type">{{$type}}</div>
+                                <div class="ic-card__type">{{__('sites.'.$type)}}</div>
                                 @endforeach
                               </div>
                             </div>

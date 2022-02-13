@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Models\Setting;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -28,5 +29,11 @@ class AppServiceProvider extends ServiceProvider
         if (app()->isProduction()) {
             \URL::forceScheme("https");
          }
+
+         $setting=Setting::first();
+
+         view()->share([
+            "setting"=>$setting
+         ]);
     }
 }

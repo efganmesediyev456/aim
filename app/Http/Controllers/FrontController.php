@@ -25,14 +25,14 @@ class FrontController extends Controller
     public function index(){
     	$blogs=Blog::whereType('xeberler')->get();
     	$menus=Menu::whereParent_id(0)->where("slug","<>","platforma");
-        $tedbirler=Teqvim::wherePage_type('tedbir')->get();
+        $tedbirler=Teqvim::wherePage_type('tedbir')->latest()->get()->take(3);
         $fealiyyetler=Fealiyyet::all();
 
         $layiheler=Innovasiya::whereType('layiheler')->get();
         $terefdas_qurums=TerefdasQurum::all();
         $links=UseFullLink::all();
         $sliders=Slider::all();
-        $elanlar=Elan::all();
+        $elanlar=Elan::whereNotNull('to')->whereNotNull('from')->latest()->get()->take(3);
 
 
     	return view("frontend.home",compact('blogs','menus','tedbirler','fealiyyetler','layiheler','terefdas_qurums','links','sliders','elanlar'));

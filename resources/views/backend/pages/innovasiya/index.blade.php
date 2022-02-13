@@ -69,12 +69,12 @@
                     <td><img style="width: 200px" src="{{asset('storage/innovasiyalar/'.$innovasiya->image)}}"></td>
                     <td>
                         @foreach(["az","en","ru"] as $locale)
-                        <span  class="{{$locale}}" style="display: none;">{{$innovasiya->translate($locale)->name}}</span>
+                        <span  class="{{$locale}}" style="display: {{app()->getLocale()==$locale ? "block":"none"}} ">{{$innovasiya->translate($locale)->name}}</span>
                         @endforeach
                     </td>
                      <td>
                         @foreach(["az","en","ru"] as $locale)
-                        <span  class="{{$locale}}" style="display: none;">{{mb_substr($innovasiya->translate($locale)->content,0,100)}}{{mb_strlen($innovasiya->translate($locale)->content)>100 ? "...":null}}</span>
+                        <span  class="{{$locale}}" style="display: {{app()->getLocale()==$locale ? "block":"none"}} ">{{mb_substr($innovasiya->translate($locale)->content,0,100)}}{{mb_strlen($innovasiya->translate($locale)->content)>100 ? "...":null}}</span>
                         @endforeach
                     </td>
 

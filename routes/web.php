@@ -20,6 +20,8 @@ use App\Http\Controllers\LinkController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\StrukturController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -56,6 +58,7 @@ Route::group(["middleware"=>"auth","prefix"=>"admin"],function(){
     Route::resource("/terefdas",TerefdasQurumController::class);
     Route::resource("/link",LinkController::class);
     Route::resource("/slider",SliderController::class);
+    Route::resource("/struktur",StrukturController::class);
     Route::get("/setting",[SettingController::class,'index'])->name('setting.index');
     Route::post("/setting",[SettingController::class,'settingPost'])->name('setting.store');
     Route::post('ckeditor/image_upload', [AdminDashboardController::class, 'upload'])->name('upload');
@@ -77,7 +80,8 @@ Route::group(['prefix' => '{locale?}', 'middleware' => 'localize','as'=>'frond']
     Route::post('/innovasiya-teqvimi/search',[FrontController::class,'search'])->name('.search');
    
    	Route::get('/{parent}/{dynamic}',[PagesController::class,'show'])->name('.page.show');
-   	Route::get('/{parent}/{dynamic}/{child}',[PagesController::class,'child'])->name('.page.child');
+    Route::get('/{parent}/{dynamic}/{child}',[PagesController::class,'child'])->name('.page.child');
+   	Route::get('/{parent}',[PagesController::class,'parent'])->name('.page.parent');
 
 
    

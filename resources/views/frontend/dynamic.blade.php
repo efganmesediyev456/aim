@@ -9,8 +9,11 @@
     <section class="breadcrumb">
       <div class="container">
         <ul>
-          <li><a href="/">Ana səhifə</a></li>
-          <li><a href="/">{{$page->parent->name}}</a></li>
+          <li><a href="/">{{__('sites.anasehife')}}</a></li>
+          @if( optional($page->parent)->name)
+          <li><a href="/">{{ optional($page->parent)->name}}</a></li>
+          
+          @endif
           <li>{{$page->name}}</li>
         </ul>
       </div>
@@ -20,7 +23,10 @@
         <div class="row">
           <div class="col-lg-3 d-lg-none">
             <div class="sidebar">
+              @if(optional(optional($page->parent)->childs)->count()>0)
               <ul>
+
+            
                 
 
                 @foreach($page->parent->childs as $child)
@@ -30,6 +36,7 @@
                 @endforeach
 
               </ul>
+              @endif
             </div>
           </div>
 
@@ -44,7 +51,9 @@
               <article class="in-page__main">
  							{!!$page->content!!}
               </article>
-              <a class="btn-light-green mt-60" href="/" data-uw-styling-context="true">Yükləyin</a>
+              @if($page->file)
+              <a class="btn-light-green mt-60" target="_blank" href="{{asset('storage/menu/'.$menu->file)}}" data-uw-styling-context="true">{{__('sites.yukleyin')}}</a>
+              @endif
             </div>
           </div>
               </div>

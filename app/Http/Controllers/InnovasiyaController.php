@@ -39,6 +39,7 @@ class InnovasiyaController extends Controller
      */
     public function store(Request $request)
     {
+        $request->merge(['slug'=>Str::slug($request->slug)]);
         
         $this->validate($request,[
             "image"=>"required|mimes:jpg,jpeg,png",
@@ -107,6 +108,7 @@ class InnovasiyaController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->merge(['slug'=>Str::slug($request->slug)]);
 
           $this->validate($request,[
             "image"=>"sometimes|mimes:jpg,jpeg,png",

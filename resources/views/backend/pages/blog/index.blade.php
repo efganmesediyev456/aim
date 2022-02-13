@@ -79,18 +79,18 @@
 
                     <td>
                         @foreach(["az","en","ru"] as $locale)
-                        <span  class="{{$locale}}" style="display: none;">{{$blog->translate($locale)->name}}</span>
+                        <span  class="{{$locale}}" style="display: {{app()->getLocale()==$locale ? "block":"none"}} ">{{$blog->translate($locale)->name}}</span>
                         @endforeach
                     </td>
                     <td>
                         @foreach(["az","en","ru"] as $locale)
-                        <span  class="{{$locale}}" style="display: none;">{{mb_substr($blog->translate($locale)->text,0,50)}}{{mb_strlen($blog->translate($locale)->text)>50 ? '...':null}}</span>
+                        <span  class="{{$locale}}" style="display: {{app()->getLocale()==$locale ? "block":"none"}} ">{{mb_substr($blog->translate($locale)->text,0,50)}}{{mb_strlen($blog->translate($locale)->text)>50 ? '...':null}}</span>
                         @endforeach
                     </td>
 
 
                     <td style="display: flex;">
-                       <a class="btn btn-success" href="{{route('blog.edit',$blog->id)}}" style="margin-right: 5px">Edit</a>
+                       <a class="btn btn-success" href="{{route('blog.edit',$blog->id)}}" style="margin-right: 5px" >Edit</a>
                        <a class="btn btn-danger" href="#" onclick="$(this).next('form').submit()">Delete</a>
 
                        <form action="{{route('blog.destroy',$blog->id)}}" method="POST">

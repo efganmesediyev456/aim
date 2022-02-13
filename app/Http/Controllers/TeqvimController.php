@@ -152,6 +152,10 @@ class TeqvimController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $teqvim=Teqvim::find($id);
+        $teqvim->deleteTranslations();
+        $teqvim->delete();
+
+        return redirect()->route("teqvim.index")->withSuccess("Ugurla silindi");
     }
 }

@@ -30,7 +30,7 @@
           </div>
           <div class="col-lg-4">
             <div class="header-tabs mt-xs-16 mt-lg-0">
-              <div class="header-tabs__list"><a class="header-tabs__item btn green active mr-sm-24 mr-xs-16" data-tab="events-1"> Tədbirlər</a><a class="header-tabs__item btn green" data-tab="events-2">Elanlar</a></div>
+              <div class="header-tabs__list"><a class="header-tabs__item btn green active mr-sm-24 mr-xs-16" data-tab="events-1"> {{__('sites.tedbirler')}}</a><a class="header-tabs__item btn green" data-tab="events-2">{{__('sites.elanlar')}}</a></div>
               <div class="header-tabs__section active" data-tab-events="1">
                 <div class="header-tabs__main">
 
@@ -59,8 +59,9 @@
                        
                         @foreach($month as $m)
                         @php($days[]=\Carbon\Carbon::parse($m)->format('d'))
+                        
                         @endforeach
-                          {{implode(',',$days)}} {{$tedbir->month((int)$key)}}
+                          {{implode(', ',$days)}} {{$tedbir->month((int)$key)}}
                         @endforeach
                       
 
@@ -74,7 +75,7 @@
                   @endforeach
 
                 </div>
-                <div class="header-tabs__footer"><a href="/">Hamısına baxın<i class="aim-long-arrow-right size16 ml-4"></i></a></div>
+                <div class="header-tabs__footer"><a href="/">{{__('sites.hamsbax')}}<i class="aim-long-arrow-right size16 ml-4"></i></a></div>
               </div>
               <div class="header-tabs__section" data-tab-events="2">
                 <div class="header-tabs__main">
@@ -83,16 +84,35 @@
 
 
 
-                  <a class="header-tab__card" href="">
+                  <a class="header-tab__card" 
+
+                      href="{{route('frond.page.child',[
+
+                      'locale'=>app()->getLocale(),
+                      'parent'=>'media',
+                      'dynamic'=>'elanlar',
+                      'child'=>$elan->slug,
+
+                    ])}}"
+                  >
                     <time>
                       {{$elan->created_at->format('n')}}  
-                      {{$elan->month(\Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$elan->created_at))}}<span>
+                      {{$elan->month(\Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$elan->created_at))}}
+                      <span>
                         
 
                         {{$elan->from}}-{{$elan->to}}
                         
 
-                      </span></time>
+                      </span>
+
+
+                    </time>
+
+                    <h6> 
+                        {{$elan->name}}
+                     </h6>
+                     <p>{{$elan->title}}</p>
                    
                       
                     </a>
@@ -102,7 +122,7 @@
 
                  
                 </div>
-                <div class="header-tabs__footer"><a href="/sds">Hamısına baxın<i class="aim-long-arrow-right size16 ml-4"></i></a></div>
+                <div class="header-tabs__footer"><a href="/{{app()->getLocale()}}/media/elanlar">{{__('sites.hamsbax')}}<i class="aim-long-arrow-right size16 ml-4"></i></a></div>
               </div>
             </div>
           </div>
@@ -115,11 +135,11 @@
         <div class="row justify-content-between mb-24">
           <div class="col-xs-5">
             <div class="section-title">
-              <h5>Xəbərlər</h5>
+              <h5>{{__('sites.xeberler')}}</h5>
             </div>
           </div>
           <div class="col-xs-5">
-            <div class="section-more"><a>Hamısına baxın<i class="aim-long-arrow-right size16 ml-4"></i></a></div>
+            <div class="section-more"><a href="/{{app()->getLocale()}}/media/xeberler">{{__('sites.hamsbax')}}<i class="aim-long-arrow-right size16 ml-4"></i></a></div>
           </div>
         </div>
       </div>
@@ -153,7 +173,7 @@
         <div class="row justify-content-between mb-24">
           <div class="col-lg-5">
             <div class="section-title">
-              <h5>Fəaliyyətimiz</h5>
+              <h5>{{__('sites.fealiyyet')}}</h5>
             </div>
           </div>
         </div>
@@ -170,7 +190,7 @@
                 <div class="activity-card__cover mb-lg-36 md-xs-20">
                   <img src="{{asset('storage/fealiyyet/'.$fealiyyet->image)}}">
                 </div>
-                <p class="mb-12">{!!trim($fealiyyet->content)!!}</p><span class="activity-card__more">Daha çox<i class="aim-long-arrow-right size16 ml-4"></i></span></a>
+                <p class="mb-12">{!!trim($fealiyyet->content)!!}</p><span class="activity-card__more">{{__('sites.dahacox')}}<i class="aim-long-arrow-right size16 ml-4"></i></span></a>
 
               </div>
 
@@ -190,11 +210,11 @@
         <div class="row justify-content-between mb-24">
           <div class="col-xs-5">
             <div class="section-title">
-              <h5>Layihələrimiz</h5>
+              <h5>{{__('sites.layihe')}}</h5>
             </div>
           </div>
           <div class="col-xs-5">
-            <div class="section-more"><a>Hamısına baxın<i class="aim-long-arrow-right size16 ml-4"></i></a></div>
+            <div class="section-more"><a>{{__('sites.hamsbax')}}<i class="aim-long-arrow-right size16 ml-4"></i></a></div>
           </div>
         </div>
       </div>
@@ -212,7 +232,7 @@
 
                     ])}}">
             <p class="mb-12">{{$layihe->name}}</p>
-            <span class="projects-card__more">Daha ətraflı<i class="aim-long-arrow-right size16 ml-4"></i></span>
+            <span class="projects-card__more">{{__('sites.dahaetrafli')}}<i class="aim-long-arrow-right size16 ml-4"></i></span>
           </a>
 
           @endforeach
@@ -250,7 +270,7 @@
         <div class="row justify-content-between mb-24">
           <div class="col-lg-5">
             <div class="section-title">
-              <h5>Tərəfdaş qurumlar</h5>
+              <h5>{{__('sites.terefdas')}}</h5>
             </div>
           </div>
           <div class="col-lg-2 d-lg-none">

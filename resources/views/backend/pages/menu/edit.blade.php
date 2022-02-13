@@ -57,7 +57,7 @@
             </ul>
         </div>
 
-        <form class="my-4" action="{{route('menu.update',$menu->id)}}" method="POST">
+        <form class="my-4" action="{{route('menu.update',$menu->id)}}" method="POST" enctype="multipart/form-data">
 
         @csrf @method('put')
             <div class="tab-content">
@@ -188,7 +188,7 @@
                 <div class="form-group row">
                         <label class="col-form-label col-sm-2 text-sm-right">Name Ru</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control  @error('name.ru') is-invalid @enderror" placeholder="name ru" name="name[ru]" value="{{$menu->translate('en')->name}}">
+                            <input type="text" class="form-control  @error('name.ru') is-invalid @enderror" placeholder="name ru" name="name[ru]" value="{{$menu->translate('ru')->name}}">
                             @error("name.ru")
                             <small class="invalid-feedback">{{$message}}</small>
                             @enderror
@@ -242,6 +242,52 @@
                             <div class="clearfix"></div>
                         </div>
                   </div>
+
+
+
+
+                  <div class="form-group row ckeditor-parent">
+                      <label class="col-form-label col-sm-2 text-sm-right"></label>
+                        <div class="col-sm-8" style="text-align: left;">
+                            @if($menu->file)
+                     <a href="{{asset('storage/menu/'.$menu->file)}}">{{$menu->file}}</a>
+                     @endif
+                 </div>
+                  </div>
+
+
+
+                    
+
+                   <div class="form-group row ckeditor-parent">
+
+                        <label class="col-form-label col-sm-2 text-sm-right">File(Eger yuklenecek fayl varsa)</label>
+
+
+
+
+                        <div class="col-sm-8">
+                            
+                          
+                            <div class="clearfix"></div>
+                            
+                            <input type="file" name="file" class="form-control @error('file') 
+
+                            is-invalid
+
+                            @enderror">
+
+
+                            @error("file")
+                            <small class="invalid-feedback">{{$message}}</small>
+                            @enderror
+
+                           
+                        </div>
+
+                    </div>
+
+                   
 
 
                  

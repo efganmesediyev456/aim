@@ -56,12 +56,12 @@
                     <td>{{$faq->id}}</td>
                     <td>
                         @foreach(["az","en","ru"] as $locale)
-                        <span  class="{{$locale}}" style="display: none;">{{$faq->translate($locale)->name}}</span>
+                        <span  class="{{$locale}}" style="display: {{app()->getLocale()==$locale ? "block":"none"}} ">{{$faq->translate($locale)->name}}</span>
                         @endforeach
                     </td>
                     <td>
                         @foreach(["az","en","ru"] as $locale)
-                        <span  class="{{$locale}}" style="display: none;">{{$faq->translate($locale)->content}}</span>
+                        <span  class="{{$locale}}" style="display: {{app()->getLocale()==$locale ? "block":"none"}} ">{{$faq->translate($locale)->content}}</span>
                         @endforeach
                     </td>
                    

@@ -9,7 +9,7 @@
     <section class="breadcrumb">
       <div class="container">
         <ul>
-          <li><a href="/">Ana səhifə</a></li>
+          <li><a href="/">{{__('sites.anasehife')}}</a></li>
           <li><a href="/">{{$page->parent->name}}</a></li>
           <li>{{$page->name}}</li>
         </ul>
@@ -38,7 +38,7 @@
          <div class="col-lg-9 p-mobile">
             <div class="in-page__content">
               <div class="in-page__title mb-24">
-                <h1>Multimedia</h1>
+                <h1>{{$page->name}}</h1>
               </div>
               <div class="links">
 

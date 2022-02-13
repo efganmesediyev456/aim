@@ -59,13 +59,13 @@
                     
                     <td>
                         @foreach(["az","en","ru"] as $locale)
-                        <span  class="{{$locale}}" style="display: none;">{{$slider->translate($locale)->name}}</span>
+                        <span  class="{{$locale}}" style="display: {{app()->getLocale()==$locale ? "block":"none"}} ">{{$slider->translate($locale)->name}}</span>
                         @endforeach
                     </td>
 
                     <td>
                         @foreach(["az","en","ru"] as $locale)
-                        <span  class="{{$locale}}" style="display: none;">{{$slider->translate($locale)->title}}</span>
+                        <span  class="{{$locale}}" style="display: {{app()->getLocale()==$locale ? "block":"none"}} ">{{$slider->translate($locale)->title}}</span>
                         @endforeach
                     </td>
 

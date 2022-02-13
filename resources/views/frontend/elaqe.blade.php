@@ -7,7 +7,7 @@
  <section class="breadcrumb">
       <div class="container">
         <ul>
-          <li><a href="/">Ana səhifə</a></li>
+          <li><a href="/">{{__('sites.anasehife')}}</a></li>
           <li>{{$page->name}}</li>
         </ul>
       </div>
@@ -24,7 +24,7 @@
                     <h1>{{$page->name}}</h1>
                   </div>
                   <div class="in-page__main">
-                    <h3>Tez-tez verilən suallar</h3>
+                    <h3>{{__('sites.faq')}}</h3>
 
                     @foreach($faqs as $faq)
                     <div class="accordion">
@@ -39,10 +39,10 @@
                     @endforeach
 
                    
-                    <h3>Məktub yazmaq</h3>
+                    <h3>{{__('sites.mektyaz')}}</h3>
                     <div class="accordion">
                       <div class="top">
-                        <p>Aqrar İnnovasiya Mərkəzinə Təklif, Şikayət və Ərizənizi göndərin.</p>
+                        <p>{{__('sites.sendaqrar')}}</p>
                       </div>
                       <div class="bottom">
                         <form class="form" action="{{route('frond.contact')}}" method="post">
@@ -50,7 +50,7 @@
                           <div class="row gy-lg-24 gy-xs-20">
                             <div class="col-md-6">
                               <div class="group">
-                                <label>Ad</label>
+                                <label>{{__('sites.name')}}</label>
                                 <div class="input-control">
                                   <input class="form-control" type="text" placeholder="Name" name="name">
                                 </div>
@@ -58,7 +58,7 @@
                             </div>
                             <div class="col-md-6">
                               <div class="group">
-                                <label>Soyad</label>
+                                <label>{{__('sites.soyad')}}</label>
                                 <div class="input-control ">
                                   <input class="form-control" type="text" placeholder="Surname" name="surname">
                                 </div>
@@ -67,7 +67,7 @@
                             </div>
                             <div class="col-md-6">
                               <div class="group">
-                                <label>Ünvan</label>
+                                <label>{{__('sites.unvan')}}</label>
                                 <div class="input-control">
                                   <input class="form-control" type="text" placeholder="Address" name="address">
                                 </div>
@@ -75,10 +75,10 @@
                             </div>
                             <div class="col-md-6">
                               <div class="group">
-                                <label>Mövzu</label>
+                                <label>{{__('sites.topic')}}</label>
                                 <div class="input-control">
                                   <select class="form-control" name="topic">
-                                    <option value="">Mövzu seçin</option>
+                                    <option value="">{{__('sites.selecttopic')}}</option>
                                     <option value="sikayet">Sikayet</option>
                                     <option value="teklif">Teklif</option>
                                   </select>
@@ -87,7 +87,7 @@
                             </div>
                             <div class="col-md-6">
                               <div class="group">
-                                <label>Şəxsiyyət vəsiqəsi FIN kodu
+                                <label>{{__('sites.fin')}}
                                   <div class="info"><i></i><img src="/assets/images/fin.png"></div>
                                 </label>
                                 <div class="input-control">
@@ -97,7 +97,7 @@
                             </div>
                             <div class="col-md-6">
                               <div class="group">
-                                <label>Elektron poçt</label>
+                                <label>{{__('sites.poct')}}</label>
                                 <div class="input-control">
                                   <input class="form-control" type="email" placeholder="Email" name="email">
                                 </div>
@@ -105,7 +105,7 @@
                             </div>
                             <div class="col-md-6">
                               <div class="group">
-                                <label>Telefon nömrəsi</label>
+                                <label>{{__('sites.telnom')}}</label>
                                 <div class="input-control">
                                   <input class="form-control" type="text" placeholder="Mobile" name="mobile" data-inputmask="'mask': '(099) 999 99 99'">
                                 </div>
@@ -113,7 +113,7 @@
                             </div>
                             <div class="col-12">
                               <div class="group">
-                                <label>Müraciətin mətni</label>
+                                <label>{{__('sites.mrcmetni')}}</label>
                                 <div class="input-control">
                                   <textarea class="form-control" placeholder="Message" name="message"></textarea>
                                 </div>
@@ -121,7 +121,7 @@
                             </div>
                             <div class="col-12">
                               <div class="group">
-                                <button>Göndər</button>
+                                <button>{{__('sites.gonder')}}</button>
                               </div>
                             </div>
                           </div>
@@ -129,23 +129,23 @@
                       </div>
                     </div>
                     <div class="contact mt-12">
-                      <h4>Bizimlə əlaqə</h4>
+                      <h4>{{__('sites.bizimleelaqe')}}</h4>
                       <div class="row gy-xs-32">
                         <div class="col-lg-6">
                           <div class="contact-box">
-                            <h6 class="contact-box__title">ÜNVAN:</h6>
-                            <p class="contact-box__description">{{$setting->address}}</p><a target="_blank" href="{{$setting->map}}" class="contact-box__link" ><i class="aim-location size16 mr-8"></i>Xəritədən ünvanı tapın</a>
+                            <h6 class="contact-box__title">{{__('sites.unvan')}}:</h6>
+                            <p class="contact-box__description">{{$setting->address}}</p><a target="_blank" href="{{$setting->map}}" class="contact-box__link" ><i class="aim-location size16 mr-8"></i>{{__('sites.findmap')}}</a>
                           </div>
                         </div>
                         <div class="col-lg-5">
                           <div class="contact-box">
-                            <h6 class="contact-box__title">TELEFON:</h6>
+                            <h6 class="contact-box__title">{{__('sites.telefon')}}:</h6>
                             <p class="context-box__description">{{$setting->number}}</p>
                           </div>
                         </div>
                         <div class="col-12">
                           <div class="contact-box">
-                            <h6 class="contact-box__title">E-poçt:</h6>
+                            <h6 class="contact-box__title">{{__('sites.epoct')}}:</h6>
                             <p class="context-box__description">{{$setting->email}}</p>
                           </div>
                         </div>

@@ -29,7 +29,7 @@
 
     <h6 class="card-header" ></h6> 
 
-    <a  href="{{route('innovasiya.create')}}" class="btn btn-success btn-sm" style="width:100px; position:relative;top:0;right:0">Added</a>
+    <a  href="{{route('elan.create')}}" class="btn btn-success btn-sm" style="width:100px; position:relative;top:0;right:0">Added</a>
 
     <select class="form-control" name="" id="changeTableLanguage" style=" width:100px; position:absolute;top:0;right:0">
         <option value="az">az</option>
@@ -53,6 +53,7 @@
                     <th>#</th>
                     <th>Slug</th>
                     <th>Name</th>
+                    <th>Title</th>
                     <th>From</th>
                     <th>To</th>
                     <th>Content</th>
@@ -67,14 +68,19 @@
                     <td>{{$elan->slug}}</td>
                     <td>
                         @foreach(["az","en","ru"] as $locale)
-                        <span  class="{{$locale}}" style="display: none;">{{$elan->translate($locale)->name}}</span>
+                        <span  class="{{$locale}}" style="display: {{app()->getLocale()==$locale ? "block":"none"}} ">{{$elan->translate($locale)->name}}</span>
+                        @endforeach
+                    </td>
+                    <td>
+                        @foreach(["az","en","ru"] as $locale)
+                        <span  class="{{$locale}}" style="display: {{app()->getLocale()==$locale ? "block":"none"}} ">{{$elan->translate($locale)->title}}</span>
                         @endforeach
                     </td>
                     <td>{{$elan->from}}</td>
                     <td>{{$elan->to}}</td>
                      <td>
                         @foreach(["az","en","ru"] as $locale)
-                        <span  class="{{$locale}}" style="display: none;">{{mb_substr($elan->translate($locale)->content,0,100)}}{{mb_strlen($elan->translate($locale)->content)>100 ? "...":null}}</span>
+                        <span  class="{{$locale}}" style="display: {{app()->getLocale()==$locale ? "block":"none"}} ">{{mb_substr($elan->translate($locale)->content,0,100)}}{{mb_strlen($elan->translate($locale)->content)>100 ? "...":null}}</span>
                         @endforeach
                     </td>
 

@@ -36,7 +36,7 @@
          <div class="col-lg-9 p-mobile">
             <div class="in-page__content">
               <div class="in-page__title mb-24">
-                <h1>Layihələr</h1>
+                <h1>{{$page->name}}</h1>
               </div>
               <div class="in-page__cover mb-24"><img src="{{asset('storage/setting/'.$setting->layihe_image_page)}}"></div>
               <div class="links">

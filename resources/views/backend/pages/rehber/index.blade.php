@@ -67,27 +67,27 @@
                     <td>{{$rehber->id}}</td>
                     <td>
                         @foreach(["az","en","ru"] as $locale)
-                        <span  class="{{$locale}}" style="display: none;">{{$rehber->translate($locale)->name}}</span>
+                        <span  class="{{$locale}}" style="display: {{app()->getLocale()==$locale ? "block":"none"}} ">{{$rehber->translate($locale)->name}}</span>
                         @endforeach
                     </td>
                     <td>
                         @foreach(["az","en","ru"] as $locale)
-                        <span  class="{{$locale}}" style="display: none;">{{$rehber->translate($locale)->surname}}</span>
+                        <span  class="{{$locale}}" style="display: {{app()->getLocale()==$locale ? "block":"none"}} ">{{$rehber->translate($locale)->surname}}</span>
                         @endforeach
                     </td>
                      <td>
                         @foreach(["az","en","ru"] as $locale)
-                        <span  class="{{$locale}}" style="display: none;">{{mb_substr($rehber->translate($locale)->content,0,100)}}{{mb_strlen($rehber->translate($locale)->content)>100 ? "...":null}}</span>
+                        <span  class="{{$locale}}" style="display: {{app()->getLocale()==$locale ? "block":"none"}} ">{{mb_substr($rehber->translate($locale)->content,0,100)}}{{mb_strlen($rehber->translate($locale)->content)>100 ? "...":null}}</span>
                         @endforeach
                     </td>
                     <td>
                         @foreach(["az","en","ru"] as $locale)
-                        <span  class="{{$locale}}" style="display: none;">{{$rehber->translate($locale)->position}}</span>
+                        <span  class="{{$locale}}" style="display: {{app()->getLocale()==$locale ? "block":"none"}} ">{{$rehber->translate($locale)->position}}</span>
                         @endforeach
                     </td>
                     <td>
                         @foreach(["az","en","ru"] as $locale)
-                        <span  class="{{$locale}}" style="display: none;">{{$rehber->translate($locale)->title}}</span>
+                        <span  class="{{$locale}}" style="display: {{app()->getLocale()==$locale ? "block":"none"}} ">{{$rehber->translate($locale)->title}}</span>
                         @endforeach
                     </td>
                      <td><img style="width: 120px;" src='{{asset("/storage")."/rehberler/".$rehber->image}}' alt="">  </td>

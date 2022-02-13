@@ -44,6 +44,7 @@ class BlogController extends Controller
     {
 
 
+        $request->merge(['slug'=>Str::slug($request->slug)]);
      
         
         $this->validate($request,[
@@ -129,6 +130,8 @@ class BlogController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->merge(['slug'=>Str::slug($request->slug)]);
+        
         $article=Blog::find($id);
          
         $this->validate($request,[

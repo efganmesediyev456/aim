@@ -36,9 +36,9 @@
           <div class="col-lg-9 p-mobile">
            <div class="in-page__content">
               <div class="in-page__title mb-24">
-                <h1>İnnovasiya festivalı</h1>
+                <h1>{{$page->name}}</h1>
               </div>
-              <div class="in-page__cover mb-24"><img src="/assets/images/innovasiya.png"></div>
+              <div class="in-page__cover mb-24"><img src="{{asset('storage/setting/'.$setting->innovasiya_festivali_image_page)}}"></div>
               <div class="row gy-xs-24 innovation">
 
                 @foreach($innovasiyalar as $innovasiya)
@@ -52,7 +52,7 @@
                       'dynamic'=>$page->slug,
                       'child'=>$innovasiya->slug,
 
-                    ])}}">Daha ətraflı<i class="aim-long-arrow-right size16 ml-4"></i></a>
+                    ])}}">{{__('sites.dahaetrafli')}}<i class="aim-long-arrow-right size16 ml-4"></i></a>
                   </div>
                 </div>
                 @endforeach

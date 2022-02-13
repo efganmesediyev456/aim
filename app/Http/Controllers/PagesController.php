@@ -11,6 +11,7 @@ use App\Models\Innovasiya;
 use App\Models\Elan;
 use App\Models\Multimedia;
 use App\Models\Setting;
+use App\Models\Struktur;
 
 class PagesController extends Controller
 {
@@ -27,6 +28,8 @@ class PagesController extends Controller
 
     	$menus=Menu::whereParent_id(0)->where('slug','<>','platforma');
     	$menu=Menu::whereSlug($view)->first();
+
+        
     	
     	if($menu->status==1){
 
@@ -70,9 +73,17 @@ class PagesController extends Controller
             $data['elanlar']=$elanlar;
         }elseif($view=='multimedia'){
 
+
             $multimedias=Multimedia::all();
 
             $data['multimedias']=$multimedias;
+        }elseif($view=='struktur'){
+
+            $strukturs=Struktur::all();
+
+            $data['strukturs']=$strukturs;
+
+            
         }
 
 
@@ -94,6 +105,8 @@ class PagesController extends Controller
             abort(404);
         }
 
+
+
        $menus=Menu::whereParent_id(0)->where('slug','<>','platforma');
 
         $data=[
@@ -105,30 +118,70 @@ class PagesController extends Controller
             $rehber=Rehber::whereSlug($child)->firstOrFail();
             $data['rehber']=$rehber;
         }elseif(in_array($view,['xeberler','musabiqeler'])){
+            $meta=[];
+
+
+
+
+
             $blog=Blog::whereSlug($child)->whereType($view)->firstOrFail();
             $other_blogs=Blog::whereType($view)->latest()->get()->take(10);
             $data['blog']=$blog;
             $data['other_blogs']=$other_blogs;
+
+            $meta['title']=$blog->name;
+            $meta['content']=strip_tags($blog->text);
+            $meta['image']=asset('storage/blogs/'.$blog->image);
+            $data['meta']=$meta;
+
             $view='xeberler';
         }elseif($view=='innovasiya-festivali'){
             $innovasiya=Innovasiya::whereSlug($child)->whereType('innovasiya-festivali')->firstOrFail();
             $other_innovasiyalar=Innovasiya::whereType('innovasiya-festivali')->latest()->get()->take(10);
             $data['innovasiya']=$innovasiya;
             $data['other_innovasiyalar']=$other_innovasiyalar;
+
+             $meta=[];
+              $meta['title']=$innovasiya->name;
+            $meta['content']=strip_tags($innovasiya->content);
+             $meta['image']=asset('storage/innovasiyalar/'.$innovasiya->image);
+              $data['meta']=$meta;
+
+
         }elseif($view=="layiheler"){
             $layihe=Innovasiya::whereSlug($child)->whereType('layiheler')->firstOrFail();
 
             $other_layiheler=Innovasiya::whereType('layiheler')->latest()->get()->take(10);
             $data['layihe']=$layihe;
             $data['other_layiheler']=$other_layiheler;
+
+
+             $meta=[];
+              $meta['title']=$layihe->name;
+            $meta['content']=strip_tags($layihe->content);
+             $meta['image']=asset('storage/innovasiyalar/'.$layihe->image);
+              $data['meta']=$meta;
+
         }elseif($view=="elanlar"){
+            $meta=[];
+
             $elan=Elan::whereSlug($child)->firstOrFail();
+            $meta['title']=$elan->title;
+            $meta['content']=strip_tags($elan->content);
+            
 
             $other_elanlar=Elan::latest()->get()->take(10);
             $data['elan']=$elan;
             $data['other_elanlar']=$other_elanlar;
+            $data['meta']=$meta;
         }elseif($view=="multimedia"){
             $multimedia=Multimedia::whereSlug($child)->firstOrFail();
+
+             $meta=[];
+              $meta['title']=$multimedia->name;
+            $meta['content']=strip_tags($multimedia->name);
+             $meta['image']=asset('storage/multimedia/'.$multimedia->onlyImage[0]->image);
+              $data['meta']=$meta;
 
             $data['multimedia']=$multimedia;
         }
@@ -136,5 +189,22 @@ class PagesController extends Controller
 
 
         return view('frontend.'.$view.'_child',$data);
+    }
+
+
+
+    public function parent($locale,$parent){
+
+        $menus=Menu::whereParent_id(0)->where('slug','<>','platforma');
+
+        $page=Menu::whereSlug($parent)->firstOrFail();
+
+        $menu=new Menu();
+
+
+        
+
+
+        return view('frontend.dynamic',['menu'=>$menu,'menus'=>$menus,'page'=>$page]);
     }
 }

@@ -58,7 +58,7 @@
             </ul>
         </div>
 
-        <form class="my-4" action="{{route('menu.store')}}" method="POST">
+        <form class="my-4" action="{{route('menu.store')}}" method="POST" enctype="multipart/form-data">
 
         @csrf
             <div class="tab-content">
@@ -241,6 +241,32 @@
                             <div class="clearfix"></div>
                         </div>
                   </div>
+
+
+
+
+
+
+                   <div class="form-group row ckeditor-parent">
+                        <label class="col-form-label col-sm-2 text-sm-right">File(Eger yuklenecek fayl varsa)</label>
+                        <div class="col-sm-8">
+                            
+                          
+                            <div class="clearfix"></div>
+                            
+                            <input type="file" name="file" class="form-control @error('file') 
+
+                            is-invalid
+
+                            @enderror">
+
+                            @error("file")
+                            <small class="invalid-feedback">{{$message}}</small>
+                            @enderror
+
+                           
+                        </div>
+                    </div>
 
 
                  

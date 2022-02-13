@@ -234,10 +234,10 @@
                                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
                                     <span class="d-inline-flex flex-lg-row-reverse align-items-center align-middle">
                                         <img src="{{asset('back/asset/img')}}/avatars/1.png" alt class="d-block ui-w-30 rounded-circle">
-                                        <span class="px-1 mr-lg-2 ml-2 ml-lg-0">Cindy Deitch</span>
+                                        <span class="px-1 mr-lg-2 ml-2 ml-lg-0">{{auth()->user()->name}}</span>
                                     </span>
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-right">
+                               <!--  <div class="dropdown-menu dropdown-menu-right">
                                     <a href="javascript:" class="dropdown-item">
                                         <i class="feather icon-user text-muted"></i> &nbsp; My profile</a>
                                     <a href="javascript:" class="dropdown-item">
@@ -247,7 +247,7 @@
                                     <div class="dropdown-divider"></div>
                                     <a href="javascript:" class="dropdown-item">
                                         <i class="feather icon-power text-danger"></i> &nbsp; Log Out</a>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -259,14 +259,14 @@
 
                     <!-- [ content ] Start -->
                     <div class="container-fluid flex-grow-1 container-p-y">
-                        <h4 class="font-weight-bold py-3 mb-0">DataTables</h4>
-                        <div class="text-muted small mt-0 mb-4 d-block breadcrumb">
+                        <!-- <h4 class="font-weight-bold py-3 mb-0">DataTables</h4> -->
+                      <!--   <div class="text-muted small mt-0 mb-4 d-block breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="#"><i class="feather icon-home"></i></a></li>
                                 <li class="breadcrumb-item" >Tables</li>
                                 <li class="breadcrumb-item active" >DataTables</li>
                             </ol>
-                        </div>
+                        </div> -->
 
                        
 
@@ -318,6 +318,9 @@
   
 
     @yield("js")
+
+
+ 
 </body>
 
 

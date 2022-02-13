@@ -64,12 +64,12 @@
 
                     <td>
                         @foreach(["az","en","ru"] as $locale)
-                        <span  class="{{$locale}}" style="display: none;">{{$fealiyyet->translate($locale)->name}}</span>
+                        <span  class="{{$locale}}" style="display: {{app()->getLocale()==$locale ? "block":"none"}} ">{{$fealiyyet->translate($locale)->name}}</span>
                         @endforeach
                     </td>
                     <td>
                         @foreach(["az","en","ru"] as $locale)
-                        <span  class="{{$locale}}" style="display: none;">{{mb_substr($fealiyyet->translate($locale)->content,0,50)}}{{mb_strlen($fealiyyet->translate($locale)->content)>50 ? '...':null}}</span>
+                        <span  class="{{$locale}}" style="display: {{app()->getLocale()==$locale ? "block":"none"}} ">{{mb_substr($fealiyyet->translate($locale)->content,0,50)}}{{mb_strlen($fealiyyet->translate($locale)->content)>50 ? '...':null}}</span>
                         @endforeach
                     </td>
 

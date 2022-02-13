@@ -59,7 +59,7 @@
                     <td>{{$multi->slug}}</td>
                     <td>
                         @foreach(["az","en","ru"] as $locale)
-                        <span  class="{{$locale}}" style="display: none;">{{$multi->translate($locale)->name}}</span>
+                        <span  class="{{$locale}}" style="display: {{app()->getLocale()==$locale ? "block":"none"}} ">{{$multi->translate($locale)->name}}</span>
                         @endforeach
                     </td>
                     <td>

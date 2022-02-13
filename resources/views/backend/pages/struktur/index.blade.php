@@ -22,7 +22,7 @@
 
     <h6 class="card-header" ></h6> 
 
-    <a  href="{{route('link.create')}}" class="btn btn-success btn-sm" style="width:100px; position:relative;top:0;right:0">Added</a>
+    <a  href="{{route('struktur.create')}}" class="btn btn-success btn-sm" style="width:100px; position:relative;top:0;right:0">Create</a>
 
     <select class="form-control" name="" id="changeTableLanguage" style=" width:100px; position:absolute;top:0;right:0">
         <option value="az">az</option>
@@ -45,31 +45,33 @@
                 <tr>
                     <th>#</th>
                     <th>Name</th>
-                    <th>Link</th>
+                    <th>Step</th>
                     <th>Options</th>
                 </tr>
             </thead>
             <tbody>
 
-            @foreach($links as $link)
+            @foreach($strukturs as $struktur)
                <tr class="odd gradeX">
-                    <td>{{$link->id}}</td>
+                    <td>{{$struktur->id}}</td>
                     <td>
                         @foreach(["az","en","ru"] as $locale)
-                        <span  class="{{$locale}}" style="display: {{app()->getLocale()==$locale ? "block":"none"}} ">{{$link->translate($locale)->name}}</span>
+                        <span  class="{{$locale}}" style="display: {{app()->getLocale()==$locale ? "block":"none"}} ">{{$struktur->translate($locale)->name}}</span>
                         @endforeach
                     </td>
+
                     <td>
-                        {{$link->link}}
+                        {{$struktur->step+1}}
                     </td>
-                   
+
+                  
                    
 
                     <td style="display: flex;">
-                       <a class="btn btn-success" href="{{route('link.edit',$link->id)}}" style="margin-right: 5px">Edit</a>
+                       <a class="btn btn-success" href="{{route('struktur.edit',$struktur->id)}}" style="margin-right: 5px">Edit</a>
                        <a class="btn btn-danger" href="#" onclick="$(this).next('form').submit()">Delete</a>
 
-                       <form action="{{route('link.destroy',$link->id)}}" method="POST">
+                       <form action="{{route('struktur.destroy',$struktur->id)}}" method="POST">
                            @csrf @method("delete")
                        </form>
                     </td>

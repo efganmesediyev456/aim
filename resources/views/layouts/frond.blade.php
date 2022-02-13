@@ -11,6 +11,15 @@
     <link rel="icon" type="image/svg+xml" href="{{url('/')}}/assets/images/logo-single.svg">
     <link rel="alternate icon" href="{{url('/')}}/assets/images/logo-single.svg">
     <link rel="mask-icon" href="{{url('/')}}/assets/images/logo-single.svg">
+
+
+    <meta property="og:url"           content="{{url()->full()}}" />
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="{{$meta['title'] ?? $page->name ?? 'Aqrar İnnovasiya Mərkəzi'}}" />
+    <meta property="og:description"   content="{{$meta['content'] ?? $page->content ?? 'Aqrar İnnovasiya Mərkəzi'}}"  />
+    <meta property="og:image"         content="{{$meta['image'] ?? 'http://localhost:8000/assets/images/logo.svg'}}" />
+
+    
     @yield('css')
     <title>Aqrar İnnovasiya Mərkəzi</title>
   <link href="{{url('/')}}/assets/css/80.css" rel="stylesheet"><link href="{{url('/')}}/assets/css/main.css" rel="stylesheet"></head>
@@ -22,11 +31,11 @@
             <div class="tools">
               <div class="aim-platform mr-8 d-lg-none">
                 <p>AİM Platforması<i class="aim-enter size20 ml-8"></i></p>
-                <div class="switch-languages"><a target="_blank" href="https://aim-farmer.saffman.uk">Fermer</a><a target="_blank" href="https://aim-organization.saffman.uk">Qurum</a></div>
+                <div class="switch-languages"><a target="_blank" href="https://aim-farmer.saffman.uk">{{__('sites.fermer')}}</a><a target="_blank" href="https://aim-organization.saffman.uk">{{__('sites.qurum')}}</a></div>
               </div>
               <div class="language mr-8 d-lg-none">
                 <a>AZ<i class="aim-angle-down size12 ml-4"></i></a>
-                <div class="switch-languages"><a>RU</a><a>EN</a></div>
+                <div class="switch-languages switch-language"><a>RU</a><a>EN</a></div>
               </div>
               <!--button(type="button").btn40.mr-8.d-xl-none.br4.open-glassesi.aim-glasses-alt.size20
               -->
@@ -35,7 +44,7 @@
             </div>
             <form class="header-searchbar mr-8" action="">
               <div class="form-container" ><i id="demo" class="aim-search size20 mr-8"></i>
-                <input type="text" placeholder="Axtarış edin" id="input">
+                <input type="text" placeholder="{{__('sites.search')}}" id="input">
               </div>
             </form>
             <button class="btn40 br4 close-btn" type="button"><i class="aim-close size20"></i></button>
@@ -82,7 +91,7 @@
               <div class="switch-languages"><a target="_blank" href="https://aim-farmer.saffman.uk">Fermer</a><a target="_blank" href="https://aim-organization.saffman.uk">Qurum</a></div>
             </div>
             <div class="language mr-8"><a>AZ<i class="aim-angle-down size12 ml-4"></i></a>
-              <div class="switch-languages"><a>RU</a><a>EN</a></div>
+              <div class="switch-languages switch-language"><a>RU</a><a>EN</a></div>
             </div>
             <button class="btn40 br4 open-search-mobile" type="button"><i class="aim-search size20"></i></button>
           </div>
@@ -119,11 +128,17 @@
 
 
             <div class="col-lg-4 col-md-4">
-                <div class="hamburger-menu__box"><a class="hamburger-menu__title">Digər</a>
+                <div class="hamburger-menu__box"><a class="hamburger-menu__title">{{__('sites.diger')}}</a>
                   <ul class="hamburger-menu__list">
-                    <li class="hamburger-menu__item bold"><a href="/platforma.html">Aqrar İnnovasiya Platforması</a></li>
-                    <li class="hamburger-menu__item bold"><a href="/{{app()->getLocale().'/innovasiya-teqvimi'}}">İnnovasiya təqvimi</a></li>
-                    <li class="hamburger-menu__item bold"><a href="{{app()->getLocale().'/elaqe'}}">Əlaqə</a></li>
+                    <li class="hamburger-menu__item bold"><a href="/{{app()->getLocale()}}/platforma">
+                      
+                      {{__('sites.platforma')}}
+
+                    </a></li>
+                    <li class="hamburger-menu__item bold"><a href="/{{app()->getLocale().'/innovasiya-teqvimi'}}">{{__('sites.innovasiya-teqvimi')}}</a></li>
+                    <li class="hamburger-menu__item bold"><a href="/{{app()->getLocale().'/elaqe'}}">
+                      {{__('sites.elaqe')}}
+                    </a></li>
                   </ul>
                 </div>
               </div>
@@ -188,11 +203,11 @@
                    
                   
                     <div class="col-lg-4 col-md-4">
-                      <div class="hamburger-menu__box"><a class="hamburger-menu__title">Digər</a>
+                      <div class="hamburger-menu__box"><a class="hamburger-menu__title">{{__('sites.diger')}}</a>
                         <ul class="hamburger-menu__list">
-                          <li class="hamburger-menu__item bold"><a href="/platforma.html">Aqrar İnnovasiya Platforması</a></li>
-                          <li class="hamburger-menu__item bold"><a href="/{{app()->getLocale().'/innovasiya-teqvimi'}}">İnnovasiya təqvimi</a></li>
-                          <li class="hamburger-menu__item bold"><a href="/{{app()->getLocale()}}/elaqe">Əlaqə</a></li>
+                          <li class="hamburger-menu__item bold"><a href="/{{app()->getLocale()}}/platforma">{{__('sites.platforma')}}</a></li>
+                          <li class="hamburger-menu__item bold"><a href="/{{app()->getLocale().'/innovasiya-teqvimi'}}">{{__('sites.innovasiya-teqvimi')}}</a></li>
+                          <li class="hamburger-menu__item bold"><a href="/{{app()->getLocale()}}/elaqe">{{__('sites.elaqe')}}</a></li>
                         </ul>
                       </div>
                     </div>
@@ -206,7 +221,7 @@
       <div class="container">
         <div class="footer-bottom">
           <p>Bütün hüquqlar qorunur © 2021</p>
-          <div class="social-media"><a class="social-media__item" href="/"><i class="aim-facebook size20"></i></a>
+          <div class="social-media"><a class="social-media__item" href="{{$setting->facebook}}"><i class="aim-facebook size20"></i></a>
             <!--a.social-media__item(href="/")i.aim-instagram.size20
             -->
             <!--a.social-media__item(href="/")i.aim-telegram.size20
@@ -244,9 +259,9 @@
           $(".language a:not(:first):contains('"+'{{app()->getLocale()}}'.toUpperCase()+"')").hide()
 
           if('{{app()->getLocale()}}'=='RU'.toLowerCase()){
-            $('.switch-languages').append("<a>AZ</a>")
+            $('.switch-language').append("<a>AZ</a>")
           }else if('{{app()->getLocale()}}'=='EN'.toLowerCase()){
-            $('.switch-languages').append("<a>AZ</a>")
+            $('.switch-language').append("<a>AZ</a>")
           }
 
 

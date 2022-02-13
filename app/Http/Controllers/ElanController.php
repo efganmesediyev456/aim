@@ -42,13 +42,19 @@ class ElanController extends Controller
      */
     public function store(Request $request)
     {
+
+
+         
+        $request->merge(['slug'=>Str::slug($request->slug)]);
              
         $this->validate($request,[
             "name.az"=>"required",
             "content.az"=>"required",
+            "title.az"=>"required",
             "slug"=>"required|unique:elans,slug",
             "from"=>Rule::requiredIf($request->to!=''),
             "to"=>Rule::requiredIf($request->from!=''),
+
         ]);
 
         $elan=new Elan;
@@ -61,6 +67,7 @@ class ElanController extends Controller
         foreach (['az','en','ru'] as $locale) {
             $elan->translateOrNew($locale)->name = $request->name["$locale"];
             $elan->translateOrNew($locale)->content = $request->content["$locale"];
+            $elan->translateOrNew($locale)->title = $request->title["$locale"];
         }
         $elan->save();
         return redirect()->route("elan.index")->withSuccess("Ugurla yaradildi");
@@ -100,12 +107,18 @@ class ElanController extends Controller
     public function update(Request $request, $id)
     {
 
+
+           
+          $request->merge(['slug'=>Str::slug($request->slug)]);
+
+
         $elan=Elan::findOrFail($id);
 
     
          $this->validate($request,[
             "name.az"=>"required",
             "content.az"=>"required",
+            "title.az"=>"required",
             "slug"=>"required|unique:elans,slug,".$elan->id,
 
             "from"=>Rule::requiredIf($request->to!=''),
@@ -120,6 +133,7 @@ class ElanController extends Controller
         foreach (['az','en','ru'] as $locale) {
             $elan->translateOrNew($locale)->name = $request->name["$locale"];
             $elan->translateOrNew($locale)->content = $request->content["$locale"];
+            $elan->translateOrNew($locale)->title = $request->title["$locale"];
         }
         $elan->save();
         return redirect()->route("elan.index")->withSuccess("Ugurla deyisiklik edildi");
@@ -133,6 +147,10 @@ class ElanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $elan=Elan::find($id);
+        $elan->deleteTranslations();
+        $elan->delete();
+        return redirect()->route("elan.index")->withSuccess("Ugurla silindi");
+
     }
 }

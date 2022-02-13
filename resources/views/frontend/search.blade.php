@@ -8,8 +8,8 @@
  <section class="breadcrumb">
       <div class="container">
         <ul>
-          <li><a href="/">Ana səhifə</a></li>
-          <li>Axtarış nəticələri</li>
+          <li><a href="/">{{__('sites.anasehife')}}</a></li>
+          <li>{{__('sites.axtnetice')}}</li>
         </ul>
       </div>
     </section>
@@ -19,7 +19,7 @@
           <div class="col-lg-3 d-lg-none">
             <div class="sidebar">
               <ul>
-                <li class="active"><a> nəticə</a></li>
+                <li class="active"><a> {{__('sites.netice')}}</a></li>
               </ul>
             </div>
           </div>
@@ -30,7 +30,7 @@
 
             <div class="in-page__content">
               <div class="in-page__title mb-24">
-                <h1>“{{request()->search}} ” axtarış nəticələri</h1>
+                <h1>“{{request()->search}} ” {{strtolower(__('sites.axtnetice'))}}</h1>
 
 
               </div>
@@ -106,7 +106,7 @@
 
 
 	})
-	$(".sidebar li a").text(l+" nəticə");
+	$(".sidebar li a").text(l+" {{__('sites.netice')}}");
 
 
 

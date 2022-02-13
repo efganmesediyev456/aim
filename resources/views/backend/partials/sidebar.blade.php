@@ -69,8 +69,8 @@
         <div>Elanlar</div>
     </a>
     <ul class="sidenav-menu">
-        <li class="sidenav-item @if(in_array(\Request::route()->getName(),['elan.create'])) active @endif"><a href="{{route('elan.create')}}" class="sidenav-link"><div>elan Create</div></a></li>
-        <li class="sidenav-item @if(in_array(\Request::route()->getName(),['elan.index'])) active @endif"><a href="{{route('elan.index')}}" class="sidenav-link"><div>elan</div></a></li>
+        <li class="sidenav-item @if(in_array(\Request::route()->getName(),['elan.create'])) active @endif"><a href="{{route('elan.create')}}" class="sidenav-link"><div>Elan Create</div></a></li>
+        <li class="sidenav-item @if(in_array(\Request::route()->getName(),['elan.index'])) active @endif"><a href="{{route('elan.index')}}" class="sidenav-link"><div>Elanlar</div></a></li>
     </ul>
 </li>
 
@@ -179,7 +179,19 @@
     </a>
     <ul class="sidenav-menu">
         <li class="sidenav-item @if(in_array(\Request::route()->getName(),['slider.create'])) active @endif"><a href="{{route('slider.create')}}" class="sidenav-link"><div>slider Create</div></a></li>
-        <li class="sidenav-item @if(in_array(\Request::route()->getName(),['slider.index'])) active @endif"><a href="{{route('link.index')}}" class="sidenav-link"><div>sliders</div></a></li>
+        <li class="sidenav-item @if(in_array(\Request::route()->getName(),['slider.index'])) active @endif"><a href="{{route('slider.index')}}" class="sidenav-link"><div>sliders</div></a></li>
+    </ul>
+</li>
+
+
+ <li class="sidenav-item @if(in_array(\Request::route()->getName(),['struktur.create','struktur.edit','struktur.index'])) active open @endif">
+    <a href="javascript:" class="sidenav-link sidenav-toggle">
+        <i class="sidenav-icon feather icon-activity"></i>
+        <div>Struktur</div>
+    </a>
+    <ul class="sidenav-menu">
+        <li class="sidenav-item @if(in_array(\Request::route()->getName(),['struktur.create'])) active @endif"><a href="{{route('struktur.create')}}" class="sidenav-link"><div>Struktur Create</div></a></li>
+        <li class="sidenav-item @if(in_array(\Request::route()->getName(),['struktur.index'])) active @endif"><a href="{{route('struktur.index')}}" class="sidenav-link"><div>Strukturs</div></a></li>
     </ul>
 </li>
 

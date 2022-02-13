@@ -144,6 +144,19 @@
                     </div>
 
 
+
+                     <div class="form-group row">
+                        <label class="col-form-label col-sm-2 text-sm-right">Title Az</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control  @error('title.az') is-invalid @enderror " name="title[az]" value="{{$elan->translate('az')->title}}" placeholder="Name az">
+                            @error("title.az")
+                            <small class="invalid-feedback">{{$message}}</small>
+                            @enderror
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+
+
                    
 
 
@@ -199,6 +212,20 @@
                 </div>
 
 
+                 <div class="form-group row">
+                        <label class="col-form-label col-sm-2 text-sm-right">Title En</label>
+                        <div class="col-sm-8">
+                            <input value="{{$elan->translate('en')->title}}" placeholder="title en"  name="title[en]" class="form-control">
+                            
+                            <div class="clearfix"></div>
+                            
+                            @error("title.en")
+                            <small class="invalid-feedback">{{$message}}</small>
+                            @enderror
+                        </div>
+                </div>
+
+
              
               
 
@@ -237,6 +264,18 @@
                         <div class="col-sm-8">
                             <input type="text" class="form-control  @error('name.ru') is-invalid @enderror" placeholder="name ru" name="name[ru]" value="{{$elan->translate('ru')->name}}">
                             @error("name.ru")
+                            <small class="invalid-feedback">{{$message}}</small>
+                            @enderror
+                            <div class="clearfix"></div>
+                        </div>
+                </div>
+
+
+                 <div class="form-group row">
+                        <label class="col-form-label col-sm-2 text-sm-right">Title Ru</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control  @error('title.ru') is-invalid @enderror" placeholder="title ru" name="title[ru]" value="{{$elan->translate('ru')->title}}">
+                            @error("title.ru")
                             <small class="invalid-feedback">{{$message}}</small>
                             @enderror
                             <div class="clearfix"></div>

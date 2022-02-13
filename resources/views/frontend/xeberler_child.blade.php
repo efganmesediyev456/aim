@@ -9,7 +9,7 @@
     <section class="breadcrumb">
       <div class="container">
         <ul>
-          <li><a href="/">Ana səhifə</a></li>
+          <li><a href="/">{{__('sites.anasehife')}}</a></li>
           <li><a href="/">{{$page->parent->name}}</a></li>
           <li>{{$page->name}}</li>
         </ul>
@@ -39,7 +39,7 @@
               </div>
               <time class="in-page__time mb-16">{{$blog->getDateYear()}}</time>
               <article class="in-page__main">
-                <p>{!!$blog->content!!}</p>
+                <p>{!!$blog->text!!}</p>
               </article>
               <div class="gallery mt-24">
                 <div class="gallery-image__box owl-carousel mb-8">
@@ -76,7 +76,7 @@
               </div>
               <div class="sharer">
                 <div class="left">
-                  <p>Göstərilən platformalarda paylaş:</p>
+                  <p>{{__('sites.paylas')}}</p>
                 </div>
                 <div class="right">
                   <button type="button" data-sharer="facebook" data-url="{{url()->full()}}" data-title="{{$blog->name}}"><i class="size20">
@@ -100,7 +100,7 @@
             <div class="second-block mt-60">
               <div class="in-page__content mobile">
                 <div class="second-block-head mb-24">
-                  <h1 class="second-block-head__title">Digər</h1>
+                  <h1 class="second-block-head__title">{{__('sites.diger')}}</h1>
                   <div class="slider-arrows-inpage__box">
                     <button class="prev"><i class="aim-long-arrow-right size32"></i></button>
                     <button class="next"><i class="aim-long-arrow-right size32"></i></button>

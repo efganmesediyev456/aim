@@ -11,7 +11,18 @@
 .table td, .table th {
     white-space: normal;
     vertical-align: middle;
+
+   
+  
+  word-wrap: break-word;
 }
+
+tr,td {
+  /*width: 200px;
+  max-width: 200px;*/
+  word-wrap: break-word;
+}
+
 
 
 </style>
@@ -50,17 +61,17 @@
         <table class="datatables-demo table table-striped table-bordered">
             <thead>
                 <tr>
-                    <th>#</th>
-                    <th>Format type</th>
-                    <th>Page type</th>
-                    <th>Type</th>
-                    <th>Day</th>
-                    <th>From</th>
-                    <th>To</th>
-                    <th>Name</th>
-                    <th>Title</th>
-                    <th>Content</th>
-                    <th>Options</th>
+                    <th >#</th>
+                    <th style="width: 5%!important">Format type</th>
+                    <th style="width: 10%!important">Page type</th>
+                    <th style="width: 10%!important">Type</th>
+                    <th style="min-width: 200px!important;">Day</th>
+                    <th >From</th>
+                    <th style="width: 10%!important">To</th>
+                    <th style="width: 10%!important">Name</th>
+                    <th style="width: 10%!important">Title</th>
+                    <th style="width: 10%!important">Content</th>
+                    <th >Options</th>
                 </tr>
             </thead>
             <tbody>
@@ -76,17 +87,17 @@
                     <td>{{$teqvim->to_hour}}</td>
                     <td>
                         @foreach(["az","en","ru"] as $locale)
-                        <span  class="{{$locale}}" style="display: none;">{{$teqvim->translate($locale)->name}}</span>
+                        <span  class="{{$locale}}" style="display: {{app()->getLocale()==$locale ? "block":"none"}} ">{{$teqvim->translate($locale)->name}}</span>
                         @endforeach
                     </td>
                     <td>
                         @foreach(["az","en","ru"] as $locale)
-                        <span  class="{{$locale}}" style="display: none;">{{$teqvim->translate($locale)->title}}</span>
+                        <span  class="{{$locale}}" style="display: {{app()->getLocale()==$locale ? "block":"none"}} ">{{$teqvim->translate($locale)->title}}</span>
                         @endforeach
                     </td>
                      <td>
                         @foreach(["az","en","ru"] as $locale)
-                        <span  class="{{$locale}}" style="display: none;">{{mb_substr($teqvim->translate($locale)->content,0,100)}}{{mb_strlen($teqvim->translate($locale)->content)>100 ? "...":null}}</span>
+                        <span  class="{{$locale}}" style="display: {{app()->getLocale()==$locale ? "block":"none"}} ">{{mb_substr($teqvim->translate($locale)->content,0,100)}}{{mb_strlen($teqvim->translate($locale)->content)>100 ? "...":null}}</span>
                         @endforeach
                     </td>
 
@@ -130,6 +141,16 @@
             toastr.success('{{session()->get("success")}}')
 
         @endif
+
+
+
+
+ 
+
+
+
+
+
 
     })
 </script>

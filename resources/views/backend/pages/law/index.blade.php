@@ -63,7 +63,7 @@
                     <td>{{$law->type}}</td>
                     <td>
                         @foreach(["az","en","ru"] as $locale)
-                        <span  class="{{$locale}}" style="display: none;">{{$law->translate($locale)->name}}</span>
+                        <span  class="{{$locale}}" style="display: {{app()->getLocale()==$locale ? "block":"none"}} ">{{$law->translate($locale)->name}}</span>
                         @endforeach
                     </td>
 

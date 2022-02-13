@@ -15,7 +15,7 @@ class Elan  extends Model implements TranslatableContract
 
     public $guarded=[];
 
-    public $translatedAttributes = ['name', 'content'];
+    public $translatedAttributes = ['name', 'content','title'];
 
 
     public $monthes_ru = array(
